@@ -7,11 +7,12 @@ description: Orient an agent in a multi-snapshot workspace with frozen version f
 
 ## Overview
 
-Build an evidence-backed map of a workspace that contains multiple project snapshots, one live repository, and supporting release or media folders. Finish with a concise orientation and a safe next step; do not begin implementation unless the user asks for it.
+Build an evidence-backed map of a workspace that contains multiple project snapshots, one live repository, and supporting release or media folders. Use this skill in Qoder, Claude Code, Codex, OpenCode, Cursor, Gemini CLI, or any coding-agent host that can load Markdown instructions. Finish with a concise orientation and a safe next step; do not begin implementation unless the user asks for it.
 
 ## Operating Rules
 
 - Work read-only by default. Do not fetch, build, test, publish, run artifacts, or modify frozen snapshots.
+- Use the host's available read-only tools. Treat shell examples as optional patterns, not mandatory commands.
 - Treat folder names, timestamps, README claims, and progress-log summaries as clues, not proof.
 - Separate `[observed]`, `[documented]`, and `[inferred]` claims.
 - Report conflicting evidence instead of silently choosing one source.
@@ -127,9 +128,9 @@ Compare source state with:
 
 Describe release lag as a local observation unless an authorized remote check was performed. Do not execute downloaded or packed binaries during orientation.
 
-## 5. Persist Minimal Orientation
+## 5. Persist or Hand Off Orientation
 
-Write project-scope memory only when memory updates are allowed and the orientation provides cross-session value. Read any existing project memory first and update it instead of creating a duplicate.
+If the host provides project memory and memory updates are allowed, update its existing project note using that host's native format. Otherwise, return the orientation without writing a memory file. Do not assume a specific memory filename, frontmatter schema, or index.
 
 Persist only non-obvious orientation, such as:
 
@@ -139,7 +140,7 @@ Persist only non-obvious orientation, such as:
 - Owner constraints that affect where work may happen.
 - Unresolved discrepancies that future sessions must recheck.
 
-Include the observation date, concise evidence, and the project memory `Why` and `How to apply` lines. Update the project `MEMORY.md` index with one pointer.
+Include the observation date and concise evidence. Follow the host's existing memory conventions when present.
 
 Do not persist secrets, architecture or file-map dumps, unverified test counts, temporary state, or claims already obvious from the current repository. Remove or revise stale memory that conflicts with current observations.
 

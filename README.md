@@ -1,6 +1,6 @@
 # Versioned Workspace Cold Start
 
-A reusable Qoder skill for orienting an agent inside a workspace that contains multiple project snapshots, one live repository, and supporting release, media, configuration, or draft folders.
+A reusable, host-agnostic skill for orienting a coding agent inside a workspace that contains multiple project snapshots, one live repository, and supporting release, media, configuration, or draft folders.
 
 ## What It Does
 
@@ -16,22 +16,22 @@ The skill provides a read-only, evidence-backed workflow to:
 
 ## Repository Contents
 
-- [SKILL.md](SKILL.md) - The installable Qoder skill.
+- [SKILL.md](SKILL.md) - The installable, host-agnostic agent skill.
 - [Usage guide](docs/usage.md) - Trigger examples, workflow details, and output format.
 - [Validation report](docs/validation.md) - Structural, privacy, English-language, and runtime checks.
 
 ## Requirements
 
-- Qoder CLI or a compatible agent host that supports `SKILL.md`.
-- Git Bash for the Windows shell examples.
+- An agent host that supports Markdown instructions or `SKILL.md`, such as Qoder, Claude Code, Codex, OpenCode, Cursor, or Gemini CLI.
+- Git Bash for the Windows shell examples; equivalent commands can be used in other POSIX shells.
 - Git for local repository inspection.
 
 ## Install
 
-1. Copy the `versioned-workspace-cold-start` folder into your user-level Qoder skills directory.
-2. Reload skills with `/skills reload`, or restart the session.
-3. Confirm the skill appears in `/skills list`.
-4. Invoke it with `/versioned-workspace-cold-start`.
+1. Place the `versioned-workspace-cold-start` folder in the skill directory supported by your agent host.
+2. Use the host's skill reload or registration command, or restart the session.
+3. Invoke the skill through the host's skill menu or slash command where supported.
+4. If the host has no skill loader, load `SKILL.md` as agent instructions or use a natural-language trigger.
 
 The skill does not require bundled scripts, references, assets, dependencies, or network access.
 
@@ -65,10 +65,15 @@ The package passed structural validation, Markdown link checks, English-only and
 
 See [Validation report](docs/validation.md) for details.
 
+## License
+
+MIT License. See [LICENSE](LICENSE).
+
 ## Contributing
 
 - Keep all documentation in English.
 - Do not add personal identifiers, local paths, account names, credentials, or secret values.
 - Preserve the `SKILL.md` frontmatter and hyphen-case skill name.
 - Keep the skill body under 500 lines.
+- Keep host-specific paths and commands out of `SKILL.md`; document them per host instead.
 - Validate links, code fences, and embedded shell syntax before proposing changes.

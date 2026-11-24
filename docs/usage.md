@@ -83,9 +83,9 @@ Inspect local release folders, packed products, demo media, drafts, and sample c
 
 Describe release lag as a local observation unless an authorized remote check was performed.
 
-### 5. Persist Minimal Orientation
+### 5. Persist or Hand Off Orientation
 
-When memory updates are allowed, update the existing project memory instead of creating a duplicate. Record only non-obvious orientation and unresolved discrepancies.
+When the host provides project memory and memory updates are allowed, update its existing project note using the host's native format. Otherwise, return the orientation without writing a memory file. Record only non-obvious orientation and unresolved discrepancies.
 
 Never persist credentials, secret values, local user paths, architecture dumps, unverified test counts, or temporary state.
 
@@ -124,6 +124,12 @@ done
 ```
 
 Change directory once, use forward slashes for the Git Bash path, and iterate over quoted relative names.
+
+## Host Compatibility
+
+The workflow is tool-agnostic. Use the coding agent's native file search and read tools in Qoder, Claude Code, Codex, OpenCode, Cursor, Gemini CLI, or another compatible host. Treat the shell snippets as Git Bash examples and translate them only when needed.
+
+Memory persistence is optional. Follow the host's native project-memory format when one exists; otherwise return the orientation without writing a memory file.
 
 ## Non-Goals
 
